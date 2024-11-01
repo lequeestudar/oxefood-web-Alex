@@ -3,20 +3,20 @@ import InputMask from 'react-input-mask';
 /*import { Link } from "react-router-dom";*/
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
-export default function FormCliente () {
+export default function FormCliente() {
 
     return (
         <div>
 
-            <div style={{marginTop: '3%'}}>
+            <div style={{ marginTop: '3%' }}>
 
                 <Container textAlign='justified' >
 
-                    <h2> <span style={{color: 'darkgray'}}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
+                    <h2> <span style={{ color: 'darkgray' }}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
 
                     <Divider />
 
-                    <div style={{marginTop: '4%'}}>
+                    <div style={{ marginTop: '4%' }}>
 
                         <Form>
 
@@ -35,33 +35,33 @@ export default function FormCliente () {
                                     fluid
                                     label='CPF'
                                     width={8}
-                                    >
+                                >
                                     <InputMask
                                         required
                                         mask="999.999.999-99"
-                                    /> 
+                                    />
                                 </Form.Input>
 
                                 <Form.Input
-                                fluid
-                                label='RG'
-                                width={8}
+                                    fluid
+                                    label='RG'
+                                    width={8}
                                 />
 
                             </Form.Group>
-                            
+
                             <Form.Group>
 
                                 <Form.Input
                                     fluid
                                     label='DT Nascimento'
                                     width={3}>
-                                    
-                                    <InputMask 
-                                        mask="99/99/9999" 
+
+                                    <InputMask
+                                        mask="99/99/9999"
                                         maskChar={null}
                                         placeholder="Ex: 20/03/1985"
-                                    /> 
+                                    />
                                 </Form.Input>
 
                                 <Form.Input
@@ -69,18 +69,18 @@ export default function FormCliente () {
                                     required
                                     label='Fone Celular'
                                     width={8}>
-                                    <InputMask 
+                                    <InputMask
                                         mask="(99) 9999.9999"
-                                    /> 
+                                    />
                                 </Form.Input>
 
                                 <Form.Input
                                     fluid
                                     label='Fone Fixo'
                                     width={8}>
-                                    <InputMask 
+                                    <InputMask
                                         mask="(99) 9999.9999"
-                                    /> 
+                                    />
                                 </Form.Input>
 
                                 <Form.Input
@@ -100,27 +100,44 @@ export default function FormCliente () {
                             <Form.Group>
 
                                 <Form.Input
-                                fluid
-                                label='Rua'
-                                width={15}
+                                    fluid
+                                    label='Rua'
+                                    width={15}
                                 />
 
                                 <Form.Input
-                                fluid
-                                label='Número'
-                                width={4}
+                                    fluid
+                                    label='Número'
+                                    width={4}
                                 />
 
                             </Form.Group>
 
                             <Form.Group>
-                                
+
+                                <Form.Input
+                                    fluid
+                                    label='Bairro'
+                                    width={11}
+                                />
+
+                                <Form.Input
+                                    fluid
+                                    label='Cidade'
+                                    width={11}
+                                />
+
+                                <Form.Input
+                                    fluid
+                                    label='CEP'
+                                    width={3}
+                                />
 
                             </Form.Group>
-                        
+
                         </Form>
-                        
-                        <div style={{marginTop: '4%'}}>
+
+                        <div style={{ marginTop: '4%' }}>
 
                             <Button
                                 type="button"
@@ -134,7 +151,7 @@ export default function FormCliente () {
                                 <Icon name='reply' />
                                 Voltar
                             </Button>
-                                
+
                             <Button
                                 inverted
                                 circular
@@ -150,7 +167,7 @@ export default function FormCliente () {
                         </div>
 
                     </div>
-                    
+
                 </Container>
             </div>
         </div>
