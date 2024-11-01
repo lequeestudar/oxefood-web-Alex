@@ -1,7 +1,20 @@
 import React from "react";
 import InputMask from 'react-input-mask';
 /*import { Link } from "react-router-dom";*/
-import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Icon, FormSelect, FormRadio } from 'semantic-ui-react';
+
+const options = [
+    { key: 'AL', value: 'Al', text: 'Alagoas' },
+    { key: 'BA', value: 'BA', text: 'Bahia' },
+    { key: 'CE', value: 'CE', text: 'Ceará' },
+    { key: 'MA', value: 'MA', text: 'Maranhão' },
+    { key: 'PB', value: 'PB', text: 'Paraíba' },
+    { key: 'PE', value: 'PE', text: 'Pernambuco' },
+    { key: 'PI', value: 'PI', text: 'Piauí' },
+    { key: 'RN', value: 'RN', text: 'Rio Grande do Norte' },
+    { key: 'SE', value: 'SE', text: 'Sergipe' },
+]
+
 
 export default function FormCliente() {
 
@@ -133,6 +146,27 @@ export default function FormCliente() {
                                     width={3}
                                 />
 
+                            </Form.Group>
+
+                            <FormSelect
+                                fluid
+                                label='UF'
+                                options={options}
+                                placeholder='Selecione'
+                            />
+
+                            <Form.Group>
+                                <span>Ativo: </span>
+                                <Form.Radio
+                                    fluid
+                                    label='Sim'
+                                    name="sn"
+                                />
+                                <Form.Radio
+                                    fluid
+                                    label='Não'
+                                    name="sn"
+                                />
                             </Form.Group>
 
                         </Form>
