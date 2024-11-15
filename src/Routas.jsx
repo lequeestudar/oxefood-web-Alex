@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-
-import FormCliente from './views/cliente/FormCliente';
-import FormEntregador from './views/entregador/FormEntregador';
 import Home from './views/home/Home';
+import FormCliente from './views/cliente/FormCliente';
 import FormProduto from './views/produto/FormProduto';
+import FormEntregador from './views/entregador/FormEntregador';
 
 function Rotas() {
     return (

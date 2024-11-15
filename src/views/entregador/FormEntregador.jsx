@@ -2,9 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import InputMask from 'react-input-mask';
 /*import { Link } from "react-router-dom";*/
-import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Icon, FormSelect, FormRadio } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
+const options = [
+    { key: 'AL', value: 'Al', text: 'Alagoas' },
+    { key: 'BA', value: 'BA', text: 'Bahia' },
+    { key: 'CE', value: 'CE', text: 'Ceará' },
+    { key: 'MA', value: 'MA', text: 'Maranhão' },
+    { key: 'PB', value: 'PB', text: 'Paraíba' },
+    { key: 'PE', value: 'PE', text: 'Pernambuco' },
+    { key: 'PI', value: 'PI', text: 'Piauí' },
+    { key: 'RN', value: 'RN', text: 'Rio Grande do Norte' },
+    { key: 'SE', value: 'SE', text: 'Sergipe' },
+]
 
 export default function FormEntregador() {
 
@@ -21,6 +32,8 @@ export default function FormEntregador() {
     const [bairro, setBairro] = useState();
     const [cidade, setCidade] = useState();
     const [cep, setCep] = useState();
+    const[sim, setSim] = useState();
+    const[nao, setNao] = useState();
 
     function salvar() {
 
@@ -37,7 +50,9 @@ export default function FormEntregador() {
             numero: numero,
             bairro: bairro,
             cidade: cidade,
-            cep: cep
+            cep: cep,
+            sim: sim,
+            nao: nao
         }
 
         axios.post("http://localhost:8080/api/entregador", entregadorRequest)
@@ -204,6 +219,34 @@ export default function FormEntregador() {
                                     onChange={e => setCep(e.target.value)}
                                 />
 
+                            </Form.Group>
+
+                            <FormSelect
+                                fluid
+                                label='UF'
+                                options={options}
+                                placeholder='Selecione'
+                                value={cep}
+                                onChange={e => setCep(e.target.value)}
+
+                            />
+
+                            <Form.Group>
+                                <span>Ativo: </span>
+                                <Form.Radio
+                                    fluid
+                                    label='Sim'
+                                    name="sn"
+                                    value={sim}
+                                    onChange={e => setSim(e.target.value)}
+                                />
+                                <Form.Radio
+                                    fluid
+                                    label='Não'
+                                    name="sn"
+                                    value={nao}
+                                    onChange={e => setNao(e.target.value)}
+                                />
                             </Form.Group>
 
                         </Form>

@@ -1,13 +1,12 @@
 import { Segment } from 'semantic-ui-react';
 import './App.css';
-import Rotas from './Rotas';
+import Rotas from './Routas';
 
 function App() {
 
  return (
 
    <div className="App">
-    
      
     <Rotas />
 
