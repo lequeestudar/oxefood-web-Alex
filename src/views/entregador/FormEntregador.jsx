@@ -32,8 +32,7 @@ export default function FormEntregador() {
     const [bairro, setBairro] = useState();
     const [cidade, setCidade] = useState();
     const [cep, setCep] = useState();
-    const[sim, setSim] = useState();
-    const[nao, setNao] = useState();
+    const [ativo,setAtivo] = useState(true);
 
     function salvar() {
 
@@ -51,8 +50,7 @@ export default function FormEntregador() {
             bairro: bairro,
             cidade: cidade,
             cep: cep,
-            sim: sim,
-            nao: nao
+            ativo: ativo
         }
 
         axios.post("http://localhost:8080/api/entregador", entregadorRequest)
@@ -231,21 +229,19 @@ export default function FormEntregador() {
 
                             />
 
-                            <Form.Group>
+                            <Form.Group inline>
                                 <span>Ativo: </span>
                                 <Form.Radio
                                     fluid
                                     label='Sim'
-                                    name="sn"
-                                    value={sim}
-                                    onChange={e => setSim(e.target.value)}
+                                    value={ativo}
+                                    onChange={e => setAtivo(true)}
                                 />
                                 <Form.Radio
                                     fluid
                                     label='Não'
-                                    name="sn"
-                                    value={nao}
-                                    onChange={e => setNao(e.target.value)}
+                                    checked={!ativo}
+                                    onChange={e => setAtivo (false)}
                                 />
                             </Form.Group>
 
