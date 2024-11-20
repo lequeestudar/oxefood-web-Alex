@@ -26,12 +26,13 @@ export default function FormEntregador() {
     const [foneCelular, setFoneCelular] = useState();
     const [foneFixo, setFoneFixo] = useState();
     const [qtdEntregasRealizadas, setQtdEntregasRealizadas] = useState();
-    const [valorFrete, setValorPorFrete] = useState();
+    const [valorPorFrete, setValorPorFrete] = useState();
     const [rua, setRua] = useState();
     const [numero, setNumero] = useState();
     const [bairro, setBairro] = useState();
     const [cidade, setCidade] = useState();
     const [cep, setCep] = useState();
+    const [uf, setUf] = useState();
     const [ativo,setAtivo] = useState(true);
 
     function salvar() {
@@ -44,12 +45,13 @@ export default function FormEntregador() {
             foneCelular: foneCelular,
             foneFixo: foneFixo,
             qtdEntregasRealizadas: qtdEntregasRealizadas,
-            valorFrete: valorFrete,
+            valorPorFrete: valorPorFrete,
             rua: rua,
             numero: numero,
             bairro: bairro,
             cidade: cidade,
             cep: cep,
+            uf: uf,
             ativo: ativo
         }
 
@@ -165,8 +167,8 @@ export default function FormEntregador() {
                                     fluid
                                     label='Valor por Frete'
                                     width={6}
-                                    value={valorFrete}
-                                    onChange={e => setValorFrete(e.target.value)}
+                                    value={valorPorFrete}
+                                    onChange={e => setValorPorFrete(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -224,8 +226,8 @@ export default function FormEntregador() {
                                 label='UF'
                                 options={options}
                                 placeholder='Selecione'
-                                value={cep}
-                                onChange={e => setCep(e.target.value)}
+                                value={uf}
+                                onChange={e => setUf(e.target.value)}
 
                             />
 
@@ -256,7 +258,7 @@ export default function FormEntregador() {
                                 icon
                                 labelPosition='left'
                                 color='orange'
-                                testtColo
+                                textColo
                             >
                                 <Icon name='reply' />
                                 <Link to={'/list-entregador'}>Voltar</Link>

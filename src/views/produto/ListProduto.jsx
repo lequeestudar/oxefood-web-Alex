@@ -71,10 +71,10 @@ export default function ListProduto() {
 
                                     <Table.Row key={produto.id}>
                                         <Table.Cell>{produto.titulo}</Table.Cell>
-                                        <Table.Cell>{produto.codigoProduto}</Table.Cell>
+                                        <Table.Cell>{produto.codigo}</Table.Cell>
                                         <Table.Cell>{produto.valorUnitario}</Table.Cell>
-                                        <Table.Cell>{produto.tempoDeEntregaMinino}</Table.Cell>
-                                        <Table.Cell>{produto.tempoDeEntregaMaximo}</Table.Cell>
+                                        <Table.Cell>{produto.tempoEntregaMinimo}</Table.Cell>
+                                        <Table.Cell>{produto.tempoEntregaMaximo}</Table.Cell>
                                         <Table.Cell textAlign='center'>
 
                                             <Button

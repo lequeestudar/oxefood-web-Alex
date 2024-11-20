@@ -89,13 +89,13 @@ export default function ListEntregador() {
                                         <Table.Cell>{entregador.foneFixo}</Table.Cell>
                                         <Table.Cell>{entregador.qtdEntregasRealizadas}</Table.Cell>
                                         <Table.Cell>{entregador.valorFrete}</Table.Cell>
-                                        <Table.Cell>{entregador.rua}</Table.Cell>
-                                        <Table.Cell>{entregador.complemento}</Table.Cell>
-                                        <Table.Cell>{entregador.numero}</Table.Cell>
-                                        <Table.Cell>{entregador.bairro}</Table.Cell>
-                                        <Table.Cell>{entregador.cidade}</Table.Cell>
-                                        <Table.Cell>{entregador.cep}</Table.Cell>
-                                        <Table.Cell>{entregador.uf}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoRua}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoComplemento}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoNumero}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoBairro}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoCidade}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoCep}</Table.Cell>
+                                        <Table.Cell>{entregador.enderecoUf}</Table.Cell>
                                         <Table.Cell>{entregador.ativo ? 'Ativo' : 'Inativo'}</Table.Cell>
                                         <Table.Cell textAlign='center'>
 
