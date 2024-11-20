@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import InputMask from 'react-input-mask';
-/*import { Link } from "react-router-dom";*/
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon, FormSelect, FormRadio } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
@@ -26,7 +26,7 @@ export default function FormEntregador() {
     const [foneCelular, setFoneCelular] = useState();
     const [foneFixo, setFoneFixo] = useState();
     const [qtdEntregasRealizadas, setQtdEntregasRealizadas] = useState();
-    const [valorPorFrete, setValorPorFrete] = useState();
+    const [valorFrete, setValorPorFrete] = useState();
     const [rua, setRua] = useState();
     const [numero, setNumero] = useState();
     const [bairro, setBairro] = useState();
@@ -44,7 +44,7 @@ export default function FormEntregador() {
             foneCelular: foneCelular,
             foneFixo: foneFixo,
             qtdEntregasRealizadas: qtdEntregasRealizadas,
-            valorPorFrete: valorPorFrete,
+            valorFrete: valorFrete,
             rua: rua,
             numero: numero,
             bairro: bairro,
@@ -165,8 +165,8 @@ export default function FormEntregador() {
                                     fluid
                                     label='Valor por Frete'
                                     width={6}
-                                    value={valorPorFrete}
-                                    onChange={e => setValorPorFrete(e.target.value)}
+                                    value={valorFrete}
+                                    onChange={e => setValorFrete(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -256,10 +256,10 @@ export default function FormEntregador() {
                                 icon
                                 labelPosition='left'
                                 color='orange'
-                                textColo
+                                testtColo
                             >
                                 <Icon name='reply' />
-                                Voltar
+                                <Link to={'/list-entregador'}>Voltar</Link>
                             </Button>
 
                             <Button

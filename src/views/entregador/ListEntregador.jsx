@@ -58,9 +58,20 @@ export default function ListEntregador() {
                                 <Table.Row>
                                     <Table.HeaderCell>Nome</Table.HeaderCell>
                                     <Table.HeaderCell>CPF</Table.HeaderCell>
+                                    <Table.HeaderCell>RG</Table.HeaderCell>
                                     <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
                                     <Table.HeaderCell>Fone Celular</Table.HeaderCell>
                                     <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                                    <Table.HeaderCell>Qtd Entregas Realizadas</Table.HeaderCell>
+                                    <Table.HeaderCell>Valor Frete</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço Rua</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço Complemento</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço Número</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço Bairro</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço Cidade</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço CEP</Table.HeaderCell>
+                                    <Table.HeaderCell>Endereço UF</Table.HeaderCell>
+                                    <Table.HeaderCell>Ativo</Table.HeaderCell>
                                     <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
@@ -72,9 +83,20 @@ export default function ListEntregador() {
                                     <Table.Row key={entregador.id}>
                                         <Table.Cell>{entregador.nome}</Table.Cell>
                                         <Table.Cell>{entregador.cpf}</Table.Cell>
+                                        <Table.Cell>{entregador.rg}</Table.Cell>
                                         <Table.Cell>{formatarData(entregador.dataNascimento)}</Table.Cell>
                                         <Table.Cell>{entregador.foneCelular}</Table.Cell>
                                         <Table.Cell>{entregador.foneFixo}</Table.Cell>
+                                        <Table.Cell>{entregador.qtdEntregasRealizadas}</Table.Cell>
+                                        <Table.Cell>{entregador.valorFrete}</Table.Cell>
+                                        <Table.Cell>{entregador.rua}</Table.Cell>
+                                        <Table.Cell>{entregador.complemento}</Table.Cell>
+                                        <Table.Cell>{entregador.numero}</Table.Cell>
+                                        <Table.Cell>{entregador.bairro}</Table.Cell>
+                                        <Table.Cell>{entregador.cidade}</Table.Cell>
+                                        <Table.Cell>{entregador.cep}</Table.Cell>
+                                        <Table.Cell>{entregador.uf}</Table.Cell>
+                                        <Table.Cell>{entregador.ativo ? 'Ativo' : 'Inativo'}</Table.Cell>
                                         <Table.Cell textAlign='center'>
 
                                             <Button

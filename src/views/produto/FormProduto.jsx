@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon, FormTextArea, FormGroup, FormInput } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
@@ -117,7 +117,7 @@ export default function FormProduto() {
                                 color='orange'
                             >
                                 <Icon name='reply' />
-                                Voltar
+                                <Link to={'/list-produto'}>Voltar</Link>
                             </Button>
 
                             <Button
