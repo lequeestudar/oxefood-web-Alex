@@ -7,19 +7,19 @@ import MenuSistema from '../../MenuSistema';
 export default function FormProduto() {
 
     const [titulo, setTitulo] = useState();
-    const [codigoProduto, setCodigoProduto] = useState();
+    const [codigo, setCodigo] = useState();
     const [valorUnitario, setValorUnitario] = useState();
-    const [tempoDeEntregaMinino, setTempoEntregaMinimo] = useState();
-    const [tempoDeEntregaMaximo, setTempoEntregaMaximo] = useState();
+    const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
+    const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
 
     function salvar() {
 
         let produtoRequest = {
             titulo: titulo,
-            codigoProduto: codigoProduto,
+            codigo: codigo,
             valorUnitario: valorUnitario,
-            tempoDeEntregaMinino: tempoDeEntregaMinino,
-            tempoDeEntregaMaximo: tempoDeEntregaMaximo
+            tempoEntregaMinimo: tempoEntregaMinimo,
+            tempoEntregaMaximo: tempoEntregaMaximo
         }
 
         axios.post("http://localhost:8080/api/produto", produtoRequest)
@@ -65,8 +65,8 @@ export default function FormProduto() {
                                     label='Código do Produto'
                                     placeholder='Informe o código do produto'
                                     maxLength="100"
-                                    value={codigoProduto}
-                                    onChange={e => setCodigoProduto(e.target.value)}
+                                    value={codigo}
+                                    onChange={e => setCodigo(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -89,7 +89,7 @@ export default function FormProduto() {
                                     label='Tempo de Entrega Minimo em Minutos'
                                     placeholder='30'
                                     maxLength="100"
-                                    value={tempoDeEntregaMinino}
+                                    value={tempoEntregaMinimo}
                                     onChange={e => setTempoEntregaMinimo(e.target.value)}
                                 />
 
@@ -98,7 +98,7 @@ export default function FormProduto() {
                                     label='Tempo de Entrega Máximo em Minutos'
                                     placeholder='40'
                                     maxLength="100"
-                                    value={tempoDeEntregaMaximo}
+                                    value={tempoEntregaMaximo}
                                     onChange={e => setTempoEntregaMaximo(e.target.value)}
                                 />
 

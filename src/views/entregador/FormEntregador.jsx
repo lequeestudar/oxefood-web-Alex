@@ -26,14 +26,15 @@ export default function FormEntregador() {
     const [foneCelular, setFoneCelular] = useState();
     const [foneFixo, setFoneFixo] = useState();
     const [qtdEntregasRealizadas, setQtdEntregasRealizadas] = useState();
-    const [valorPorFrete, setValorPorFrete] = useState();
-    const [rua, setRua] = useState();
-    const [numero, setNumero] = useState();
-    const [bairro, setBairro] = useState();
-    const [cidade, setCidade] = useState();
-    const [cep, setCep] = useState();
-    const [uf, setUf] = useState();
-    const [ativo,setAtivo] = useState(true);
+    const [valorFrete, setValorFrete] = useState();
+    const [enderecoRua, setEnderecoRua] = useState();
+    const [enderecoNumero, setEnderecoNumero] = useState();
+    const [enderecoBairro, setEnderecoBairro] = useState();
+    const [enderecoCidade, setEnderecoCidade] = useState();
+    const [enderecoCep, setEnderecoCep] = useState();
+    const [enderecoUf, setEnderecoUf] = useState();
+    const [enderecoComplemento, setEnderecoComplemento] = useState();
+    const [ativo, setAtivo] = useState(true);
 
     function salvar() {
 
@@ -45,13 +46,14 @@ export default function FormEntregador() {
             foneCelular: foneCelular,
             foneFixo: foneFixo,
             qtdEntregasRealizadas: qtdEntregasRealizadas,
-            valorPorFrete: valorPorFrete,
-            rua: rua,
-            numero: numero,
-            bairro: bairro,
-            cidade: cidade,
-            cep: cep,
-            uf: uf,
+            valorFrete: valorFrete,
+            enderecoRua: enderecoRua,
+            enderecoNumero: enderecoNumero,
+            enderecoBairro: enderecoBairro,
+            enderecoCidade: enderecoCidade,
+            enderecoCep: enderecoCep,
+            enderecoUf: enderecoUf,
+            enderecoComplemento: enderecoComplemento,
             ativo: ativo
         }
 
@@ -167,8 +169,8 @@ export default function FormEntregador() {
                                     fluid
                                     label='Valor por Frete'
                                     width={6}
-                                    value={valorPorFrete}
-                                    onChange={e => setValorPorFrete(e.target.value)}
+                                    value={valorFrete}
+                                    onChange={e => setValorFrete(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -179,16 +181,16 @@ export default function FormEntregador() {
                                     fluid
                                     label='Rua'
                                     width={15}
-                                    value={rua}
-                                    onChange={e => setRua(e.target.value)}
+                                    value={enderecoRua}
+                                    onChange={e => setEnderecoRua(e.target.value)}
                                 />
 
                                 <Form.Input
                                     fluid
                                     label='Número'
                                     width={4}
-                                    value={numero}
-                                    onChange={e => setNumero(e.target.value)}
+                                    value={enderecoNumero}
+                                    onChange={e => setEnderecoNumero(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -199,24 +201,24 @@ export default function FormEntregador() {
                                     fluid
                                     label='Bairro'
                                     width={11}
-                                    value={bairro}
-                                    onChange={e => setBairro(e.target.value)}
+                                    value={enderecoBairro}
+                                    onChange={e => setEnderecoBairro(e.target.value)}
                                 />
 
                                 <Form.Input
                                     fluid
                                     label='Cidade'
                                     width={11}
-                                    value={cidade}
-                                    onChange={e => setCidade(e.target.value)}
+                                    value={enderecoCidade}
+                                    onChange={e => setEnderecoCidade(e.target.value)}
                                 />
 
                                 <Form.Input
                                     fluid
                                     label='CEP'
                                     width={3}
-                                    value={cep}
-                                    onChange={e => setCep(e.target.value)}
+                                    value={enderecoCep}
+                                    onChange={e => setEnderecoCep(e.target.value)}
                                 />
 
                             </Form.Group>
@@ -226,9 +228,16 @@ export default function FormEntregador() {
                                 label='UF'
                                 options={options}
                                 placeholder='Selecione'
-                                value={uf}
-                                onChange={e => setUf(e.target.value)}
+                                value={enderecoUf}
+                                onChange={(e,{value}) => setEnderecoUf(value)}
 
+                            />
+
+                            <Form.Input
+                                fluid
+                                label='Complemento'
+                                value={enderecoComplemento}
+                                onChange={e => setEnderecoComplemento(e.target.value)}
                             />
 
                             <Form.Group inline>
@@ -243,7 +252,7 @@ export default function FormEntregador() {
                                     fluid
                                     label='Não'
                                     checked={!ativo}
-                                    onChange={e => setAtivo (false)}
+                                    onChange={e => setAtivo(false)}
                                 />
                             </Form.Group>
 
