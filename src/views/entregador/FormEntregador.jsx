@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InputMask from 'react-input-mask';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon, FormSelect, FormRadio } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
@@ -36,6 +36,9 @@ export default function FormEntregador() {
     const [enderecoComplemento, setEnderecoComplemento] = useState();
     const [ativo, setAtivo] = useState(true);
 
+    const { state } = useLocation();
+    const [idEntregador, setIdEntregador] = useState();
+
     function salvar() {
 
         let entregadorRequest = {
@@ -57,14 +60,41 @@ export default function FormEntregador() {
             ativo: ativo
         }
 
-        axios.post("http://localhost:8080/api/entregador", entregadorRequest)
-            .then((response) => {
-                console.log('Entregador cadastrado com sucesso.')
-            })
-            .catch((error) => {
-                console.log('Erro ao incluir um entregador.')
-            })
+        if (idEntregador != null) { //Alteração:
+            axios.put("http://localhost:8080/api/entregador/" + idEntregador, entregadorRequest)
+                .then((response) => { console.log('Entregador alterado com sucesso.') })
+                .catch((error) => { console.log('Erro ao alter um entregador.') })
+        } else { //Cadastro:
+            axios.post("http://localhost:8080/api/entregador", entregadorRequest)
+                .then((response) => { console.log('Entregador cadastrado com sucesso.') })
+                .catch((error) => { console.log('Erro ao incluir o entregador.') })
+        }
     }
+
+    useEffect(() => {
+        if (state != null && state.id != null) {
+            axios.get("http://localhost:8080/api/entregador/" + state.id)
+                .then((response) => {
+                    setIdEntregador(response.data.id)
+                    setNome(response.data.nome)
+                    setCpf(response.data.cpf)
+                    setCpf(response.data.rg)
+                    setDataNascimento(response.data.dataNascimento)
+                    setFoneCelular(response.data.foneCelular)
+                    setFoneFixo(response.data.foneFixo)
+                    setFoneFixo(response.data.qtdEntregasRealizadas)
+                    setFoneFixo(response.data.valorFrete)
+                    setFoneFixo(response.data.enderecoRua)
+                    setFoneFixo(response.data.enderecoNumero)
+                    setFoneFixo(response.data.enderecoBairro)
+                    setFoneFixo(response.data.enderecoCidade)
+                    setFoneFixo(response.data.enderecoCep)
+                    setFoneFixo(response.data.enderecoUf)
+                    setFoneFixo(response.data.enderecoComplemento)
+                    setFoneFixo(response.data.ativo)
+                })
+        }
+    }, [state])
 
     return (
         <div>
@@ -74,8 +104,12 @@ export default function FormEntregador() {
 
                 <Container textAlign='justified' >
 
-                    <h2> <span style={{ color: 'darkgray' }}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
-
+                    {idEntregador === undefined &&
+                        <h2> <span style={{ color: 'darkgray' }}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro</h2>
+                    }
+                    {idEntregador != undefined &&
+                        <h2> <span style={{ color: 'darkgray' }}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Alteração</h2>
+                    }
                     <Divider />
 
                     <div style={{ marginTop: '4%' }}>
@@ -229,7 +263,7 @@ export default function FormEntregador() {
                                 options={options}
                                 placeholder='Selecione'
                                 value={enderecoUf}
-                                onChange={(e,{value}) => setEnderecoUf(value)}
+                                onChange={(e, { value }) => setEnderecoUf(value)}
 
                             />
 
