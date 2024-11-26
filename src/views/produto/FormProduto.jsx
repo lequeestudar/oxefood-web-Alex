@@ -8,6 +8,7 @@ export default function FormProduto() {
 
     const [titulo, setTitulo] = useState();
     const [codigo, setCodigo] = useState();
+    const [descricao, setDescricao] = useState();
     const [valorUnitario, setValorUnitario] = useState();
     const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
     const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
@@ -20,6 +21,7 @@ export default function FormProduto() {
         let produtoRequest = {
             titulo: titulo,
             codigo: codigo,
+            descricao: descricao,
             valorUnitario: valorUnitario,
             tempoEntregaMinimo: tempoEntregaMinimo,
             tempoEntregaMaximo: tempoEntregaMaximo
@@ -43,10 +45,11 @@ export default function FormProduto() {
                     setIdProduto(response.data.id)
                     setTitulo(response.data.titulo)
                     setCodigo(response.data.codigo)
+                    setDescricao(response.data.descricao)
                     setValorUnitario(response.data.valorUnitario)
                     setTempoEntregaMinimo(response.data.tempoEntregaMinimo)
                     setTempoEntregaMaximo(response.data.tempoEntregaMaximo)
-        
+
                 })
         }
     }, [state])
@@ -59,7 +62,7 @@ export default function FormProduto() {
 
                 <Container textAlign='justified' >
 
-                {idProduto === undefined &&
+                    {idProduto === undefined &&
                         <h2> <span style={{ color: 'darkgray' }}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro</h2>
                     }
                     {idProduto != undefined &&
@@ -97,7 +100,11 @@ export default function FormProduto() {
 
                             </Form.Group>
 
-                            <FormTextArea label='Descrição' placeholder='Informe a descrição do produto' />
+                            <FormTextArea label='Descrição'
+                                placeholder='Informe a descrição do produto'
+                                value={descricao}
+                                onChange={e => setDescricao(e.target.value)}
+                            />
 
                             <Form.Group widths='equal'>
 

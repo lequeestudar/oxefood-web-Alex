@@ -10,13 +10,29 @@ export default function ListEntregador() {
     const [openModal, setOpenModal] = useState(false);
     const [idRemover, setIdRemover] = useState();
 
+    const [detalheEntregador, setDetalheEntregador] = useState();
+    const [openDetalhesModal, setOpenDetalhesModal] = useState(false);
+    const [idEntregador, setIdEntregador] = useState ();
+
     useEffect(() => {
         carregarLista();
     }, [])
 
+    useEffect(() => {
+        carregarEntregador();
+    }, [idEntregador])
+
     function carregarLista() {
 
         axios.get("http://localhost:8080/api/entregador")
+            .then((response) => {
+                setLista(response.data)
+            })
+    }
+
+    function carregarEntregador() {
+
+        axios.get("http://localhost:8080/api/entregador/"+ idEntregador)
             .then((response) => {
                 setLista(response.data)
             })
@@ -33,8 +49,14 @@ export default function ListEntregador() {
     }
 
     function confirmaRemover(id) {
-        setOpenModal(true)
-        setIdRemover(id)
+        const entregadorSelecionado = lista.find(entregador => entregador.id === id);
+        setDetalheEntregador(entregadorSelecionado);
+        setOpenDetalhesModal(true);
+    }
+
+    function verTudo(id) {
+        setDetalheEntregador(true);
+        setOpenDetalhesModal(id);
     }
 
     async function remover() {
@@ -144,6 +166,16 @@ export default function ListEntregador() {
                                                 <Icon name='trash' />
                                             </Button>
 
+                                            <Button
+                                                inverted
+                                                circular
+                                                color='grey'
+                                                title='Clique aqui para remover este entregador'
+                                                icon
+                                                onClick={e => verTudo(entregador.id)}>
+                                                <Icon name='eye' style={{ color: 'grey' }} />
+                                            </Button>
+
                                         </Table.Cell>
                                     </Table.Row>
                                 ))}
@@ -170,6 +202,35 @@ export default function ListEntregador() {
                     </Button>
                     <Button color='green' inverted onClick={() => remover()}>
                         <Icon name='checkmark' /> Sim
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+
+            <Modal
+                basic
+                onClose={() => setOpenDetalhesModal(false)}
+                onOpen={() => setOpenDetalhesModal(true)}
+                open={openDetalhesModal}
+            >
+                <Header icon>
+                    <Icon name='eye' />
+                    <div style={{ marginTop: '5%' }}> Detalhes do Entregador </div>
+                </Header>
+                <Modal.Content>
+                    {detalheEntregador && (
+                        <div>
+                            <p><strong>Nome:</strong> {detalheEntregador.nome}</p>
+                            <p><strong>Fone Celular:</strong> {detalheEntregador.foneCelular}</p>
+                            <p><strong>Fone Fixo:</strong> {detalheEntregador.foneFixo}</p>
+                            <p><strong>Qtd Entregas Realizadas:</strong> {detalheEntregador.qtdEntregasRealizadas}</p>
+                            <p><strong>Valor Frete:</strong> {detalheEntregador.valorFrete}</p>
+                            <p><strong>Ativo:</strong> {detalheEntregador.ativo ? 'Ativo' : 'Inativo'}</p>
+                        </div>
+                    )}
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' inverted onClick={() => setOpenDetalhesModal(false)}>
+                        <Icon name='remove' /> Fechar
                     </Button>
                 </Modal.Actions>
             </Modal>
