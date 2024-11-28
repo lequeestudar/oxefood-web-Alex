@@ -48,7 +48,7 @@ export default function FormEntregador() {
             dataNascimento: dataNascimento,
             foneCelular: foneCelular,
             foneFixo: foneFixo,
-            qtdEntregasRealizadas: qtdEntregasRealizadas,
+            qtdEntregasRealizadas: Number(qtdEntregasRealizadas),
             valorFrete: valorFrete,
             enderecoRua: enderecoRua,
             enderecoNumero: enderecoNumero,
@@ -195,6 +195,7 @@ export default function FormEntregador() {
                                     fluid
                                     label='QTD Entregas Realizadas'
                                     width={6}
+                                    type="number"
                                     value={qtdEntregasRealizadas}
                                     onChange={e => setQtdEntregasRealizadas(e.target.value)}>
                                 </Form.Input>

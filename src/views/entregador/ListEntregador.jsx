@@ -7,34 +7,32 @@ import MenuSistema from '../../MenuSistema';
 export default function ListEntregador() {
 
     const [lista, setLista] = useState([]);
+    const [lista2, setLista2] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [idRemover, setIdRemover] = useState();
 
     const [detalheEntregador, setDetalheEntregador] = useState();
     const [openDetalhesModal, setOpenDetalhesModal] = useState(false);
-    const [idEntregador, setIdEntregador] = useState ();
+    const [idEntregador, setIdEntregador] = useState(false);
 
     useEffect(() => {
         carregarLista();
     }, [])
 
-    useEffect(() => {
-        carregarEntregador();
-    }, [idEntregador])
+     function carregarLista() {
 
-    function carregarLista() {
-
-        axios.get("http://localhost:8080/api/entregador")
+         axios.get("http://localhost:8080/api/entregador")
             .then((response) => {
                 setLista(response.data)
             })
     }
 
-    function carregarEntregador() {
+     function carregarEntregador(id) {
 
-        axios.get("http://localhost:8080/api/entregador/"+ idEntregador)
+         axios.get("http://localhost:8080/api/entregador/" + id)
             .then((response) => {
-                setLista(response.data)
+                setLista2(response.data)
+                setIdEntregador(true)
             })
     }
 
@@ -54,14 +52,9 @@ export default function ListEntregador() {
         setOpenDetalhesModal(true);
     }
 
-    function verTudo(id) {
-        setDetalheEntregador(true);
-        setOpenDetalhesModal(id);
-    }
+     function remover() {
 
-    async function remover() {
-
-        await axios.delete('http://localhost:8080/api/entregador/' + idRemover)
+         axios.delete('http://localhost:8080/api/entregador/' + idRemover)
             .then((response) => {
 
                 console.log('Entregador removido com sucesso.')
@@ -172,7 +165,7 @@ export default function ListEntregador() {
                                                 color='grey'
                                                 title='Clique aqui para remover este entregador'
                                                 icon
-                                                onClick={e => verTudo(entregador.id)}>
+                                                onClick={e => carregarEntregador(entregador.id)}>
                                                 <Icon name='eye' style={{ color: 'grey' }} />
                                             </Button>
 
@@ -208,28 +201,103 @@ export default function ListEntregador() {
 
             <Modal
                 basic
-                onClose={() => setOpenDetalhesModal(false)}
-                onOpen={() => setOpenDetalhesModal(true)}
-                open={openDetalhesModal}
+                onClose={() => setIdEntregador(false)}
+                onOpen={() => setIdEntregador(true)}
+                open={idEntregador}
             >
                 <Header icon>
                     <Icon name='eye' />
                     <div style={{ marginTop: '5%' }}> Detalhes do Entregador </div>
                 </Header>
                 <Modal.Content>
-                    {detalheEntregador && (
-                        <div>
-                            <p><strong>Nome:</strong> {detalheEntregador.nome}</p>
-                            <p><strong>Fone Celular:</strong> {detalheEntregador.foneCelular}</p>
-                            <p><strong>Fone Fixo:</strong> {detalheEntregador.foneFixo}</p>
-                            <p><strong>Qtd Entregas Realizadas:</strong> {detalheEntregador.qtdEntregasRealizadas}</p>
-                            <p><strong>Valor Frete:</strong> {detalheEntregador.valorFrete}</p>
-                            <p><strong>Ativo:</strong> {detalheEntregador.ativo ? 'Ativo' : 'Inativo'}</p>
-                        </div>
-                    )}
+                    <Table>
+
+                        <Table.Body>
+
+                            
+                                <Table.Row>
+                                    <Table.Cell width={4} ><strong>Nome</strong></Table.Cell>
+                                    <Table.Cell>{lista2.nome}</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell><strong>CPF</strong></Table.Cell>
+                                    <Table.Cell>{lista2.cpf}</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell><strong>RG</strong></Table.Cell>
+                                    <Table.Cell>{lista2.rg}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Data de Nascimento</strong></Table.Cell>
+                                    <Table.Cell>{lista2.dataNascimento}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Fone Celular</strong></Table.Cell>
+                                    <Table.Cell>{lista2.foneCelular}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Fone Fixo</strong></Table.Cell>
+                                    <Table.Cell>{lista2.foneFixo}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>QTD Entregas Realizadas</strong></Table.Cell>
+                                    <Table.Cell>{lista2.qtdEntregasRealizadas}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Valor do Frete</strong></Table.Cell>
+                                    <Table.Cell>{lista2.valorFrete}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Endereco da Rua</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoRua}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Complemento</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoComplemento}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Numero</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoNumero}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Bairro</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoBairro}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Cidade</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoCidade}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>Cep</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoCep}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><strong>UF</strong></Table.Cell>
+                                    <Table.Cell>{lista2.enderecoUf}</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+
+                                    <Table.Cell><strong>Ativo</strong></Table.Cell>
+                                    <Table.Cell>{lista2.ativo ? "Sim" : "Não"}</Table.Cell>
+                                </Table.Row>
+                           
+                        </Table.Body>
+                    </Table>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' inverted onClick={() => setOpenDetalhesModal(false)}>
+                    <Button basic color='red' inverted onClick={() => setIdEntregador(false)}>
                         <Icon name='remove' /> Fechar
                     </Button>
                 </Modal.Actions>
