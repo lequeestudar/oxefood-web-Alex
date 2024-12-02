@@ -149,6 +149,7 @@ export default function ListEntregador() {
                                                 <Link to="/form-entregador" state={{ id: entregador.id }} style={{ color: 'green' }}> <Icon name='edit' /> </Link>
                                             </Button>
                                             &nbsp;
+
                                             <Button
                                                 inverted
                                                 circular
@@ -163,7 +164,7 @@ export default function ListEntregador() {
                                                 inverted
                                                 circular
                                                 color='grey'
-                                                title='Clique aqui para remover este entregador'
+                                                title='Clique aqui para ver detalhes deste entregador'
                                                 icon
                                                 onClick={e => carregarEntregador(entregador.id)}>
                                                 <Icon name='eye' style={{ color: 'grey' }} />
